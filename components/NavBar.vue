@@ -1,0 +1,11 @@
+<template>
+    <div class="navbar">
+        navbar
+    </div>
+</template>
+
+
+<style scoped lang="scss">
+.navbar {
+}
+</style>
