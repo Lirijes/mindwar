@@ -1,35 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import QuestionBox from "~/components/questionBox.vue";
 import type { Player } from "~/typings/types";
+import { players } from "~/utils/players";
 
 const selectedPlayer = ref<Player | null>(null);
 const showGameStartButton = ref(false);
 const showGameInterface = ref(false);
 const showOptions = ref(true);
 const showHeader = ref(true);
-
-const players: Player[] = [
-  {
-    id: 1,
-    name: "Player 1",
-    image: "images/players/dog-1417208_1280-transparent.png",
-  },
-  {
-    id: 2,
-    name: "Player 2",
-    image: "images/players/dog-1417208_1280-3-transparent.png",
-  },
-  {
-    id: 3,
-    name: "Player 3",
-    image: "images/players/dog-1417208_1280-5-transparent.png",
-  },
-  {
-    id: 4,
-    name: "Player 4",
-    image: "images/players/dog-1417208_1280-4-transparent.png",
-  },
-];
 
 const selectPlayer = (player: Player) => {
   selectedPlayer.value = player;
@@ -41,6 +20,13 @@ const startGame = () => {
   showGameStartButton.value = false;
   showGameInterface.value = true;
   showOptions.value = false;
+};
+
+const resetGame = () => {
+  selectedPlayer.value = null;
+  showGameStartButton.value = false;
+  showGameInterface.value = false;
+  showOptions.value = true;
 };
 </script>
 
@@ -92,13 +78,14 @@ const startGame = () => {
     </div>
     <!-- Game started -->
     <div v-if="showGameInterface" class="index__game-interface">
-      Game in progress...
+      <QuestionBox />
+      <button @click="resetGame" class="index__reset-button">Reset Game</button>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "../assets/css/index.scss";
+@import "../assets/css/main.scss";
 
 .index {
   &__background-image {
@@ -108,8 +95,8 @@ const startGame = () => {
   }
   &__info {
     position: absolute;
-    top: 5%;
-    left: 6%;
+    top: 2%;
+    left: 4%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,15 +160,7 @@ const startGame = () => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: $color-green;
-    color: white;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      background-color: $color-light-blue;
-    }
+    margin-top: 30px;
   }
   &__options {
     position: absolute;
@@ -218,33 +197,23 @@ const startGame = () => {
       }
     }
   }
-  &__right-player {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(100%, -50%);
-    transition: transform 0.5s ease;
-  }
-  &__right-player-box {
-    width: 200px;
-    height: 200px;
-    background-color: white;
-    text-align: center;
-    line-height: 200px;
-    font-size: 24px;
-  }
   &__game-interface {
     position: absolute;
-    top: 50%;
+    top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: #fff;
+    background-color: $color-light-grey;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 75%;
+
+    @media (min-width: 768px) {
+      top: 50%;
+      width: 400px;
+    }
   }
 }
 </style>

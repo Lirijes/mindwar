@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300;400;500;600;700&display=swap');
-@import 'index.scss';
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300;400;500;600;700&display=swap");
+@import "index.scss";
 
 body,
 html {
@@ -12,7 +12,23 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Chakra Petch', serif;
+  font-family: "Chakra Petch", serif;
   font-weight: 500;
-  color: $color-light-grey;
+  color: $color-dark-green;
+}
+
+button {
+  font-family: "Saira Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: $color-green;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: $color-light-blue;
+  }
 }
