@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300;400;500;600;700&display=swap');
+@import 'index.scss';
+
 body,
 html {
   font-family: "Saira Condensed", serif;
@@ -12,5 +14,5 @@ h3,
 h4 {
   font-family: 'Chakra Petch', serif;
   font-weight: 500;
-  color: white;
+  color: $color-light-grey;
 }

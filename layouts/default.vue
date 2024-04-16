@@ -1,27 +1,9 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-const showNavBar = ref(true);
-const showFooter = ref(true);
-
-watchEffect(() => {
-  if (route.name === 'gamemode') {
-    showNavBar.value = false;
-    showFooter.value = false;
-  } else {
-    showNavBar.value = true;
-    showFooter.value = true;
-  }
-});
 </script>
 
 <template>
   <div class="default-layout">
-    <NavBar v-if="showNavBar" />
     <slot />
-    <Footer v-if="showFooter" />
   </div>
 </template>
 
