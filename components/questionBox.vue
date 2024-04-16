@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { questions } from "~/utils/questions";
+import type { Question } from "~/typings/types";
 
 const currentQuestion = ref(0);
+const selectedQuestions = ref<Question[]>([]);
 const playerScore = ref(0);
 const robotScore = ref(0);
 const playerAnswerIndex = ref<number | null>(null);
@@ -10,12 +12,16 @@ const robotAnswerIndex = ref<number | null>(null);
 const timeLeft = ref(10); // 10 seconds per question
 const gameEnded = ref(false);
 
+const selectQuestions = () => {
+    const shuffled = questions.sort(() => 0.5 - Math.random()); // Shuffle the array
+    selectedQuestions.value = shuffled.slice(0, 6); // Pick the first 6 questions
+};
+
 // Simulate the robot's answer
 function robotAnswer() {
   const currentQuestionOptions = questions[currentQuestion.value].options;
   robotAnswerIndex.value = Math.floor(Math.random() * currentQuestionOptions.length);
 }
-
 
 // Call this function when the player selects an answer
 function selectAnswer(index: number) {
@@ -36,7 +42,7 @@ function checkAnswers() {
 
 // Move to the next question or handle when a question is initially presented
 function proceedToNextQuestion() {
-  if (currentQuestion.value < questions.length - 1) {
+  if (currentQuestion.value < selectedQuestions.value.length - 1) {
     currentQuestion.value++;
     robotAnswer(); // Generate a new answer for the robot for the next question
     resetTimer(); // Optionally reset a timer if you have one for answering
@@ -66,6 +72,7 @@ function endGame() {
 onMounted(() => {
   robotAnswer(); // Initial robot answer for the first question
   resetTimer(); // Start the timer for the player to answer
+  selectQuestions(); // Select the questions for the game
 });
 </script>
 
@@ -73,8 +80,8 @@ onMounted(() => {
     <div class="question-box">
         <!-- Display questions if the game has not ended -->
         <div v-if="!gameEnded">
-      <h1>{{ questions[currentQuestion].text }}</h1>
-      <div v-for="(option, index) in questions[currentQuestion].options" :key="index">
+            <h1 v-if="selectedQuestions.length > 0">{{ selectedQuestions[currentQuestion].text }}</h1>
+      <div v-for="(option, index) in selectedQuestions[currentQuestion]?.options" :key="index">
         <button class="question-box__options-button" @click="selectAnswer(index)">{{ option }}</button>
       </div>
       <p>Time left: {{ timeLeft }} seconds</p>
