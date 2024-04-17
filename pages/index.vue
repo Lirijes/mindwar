@@ -38,10 +38,16 @@ const resetGame = () => {
       alt="background"
     />
     <NuxtLink to="/info" class="index__info">
-      <img src="../public/images/icons/mountains-5689938_1280.png" alt="info icon" class="index__info-icon" />
+      <img
+        src="../public/images/icons/mountains-5689938_1280.png"
+        alt="info icon"
+        class="index__info-icon"
+      />
     </NuxtLink>
 
-    <h1 id="index__header" v-if="showHeader" class="index__header"><span>Let's Mind War!</span><span>Choose Your Player</span></h1>
+    <h1 id="index__header" v-if="showHeader" class="index__header">
+      <span>Let's Mind War!</span><span>Choose Your Player</span>
+    </h1>
 
     <!-- Selected Player -->
     <div v-if="selectedPlayer" class="index__selected-player">
@@ -62,11 +68,7 @@ const resetGame = () => {
       </button>
 
       <div class="index__options">
-        <div
-          v-for="player in players"
-          :key="player.id"
-          class="index__option"
-        >
+        <div v-for="player in players" :key="player.id" class="index__option">
           <img
             :src="`/${player.image}`"
             class="index__option-player"
@@ -126,7 +128,7 @@ const resetGame = () => {
       display: flex;
       align-items: center;
       justify-content: center;
-      @media (min-width: 576px){
+      @media (min-width: 576px) {
         font-size: 46px;
       }
       @media (min-width: 1300px) {
@@ -149,7 +151,7 @@ const resetGame = () => {
       height: 150px;
       object-fit: cover;
       margin-bottom: 20px;
-      @media (min-width: 768px) { 
+      @media (min-width: 768px) {
         width: 200px;
         height: 200px;
       }
