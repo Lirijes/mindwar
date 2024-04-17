@@ -9,7 +9,7 @@ const playerScore = ref(0);
 const robotScore = ref(0);
 const playerAnswerIndex = ref<number | null>(null);
 const robotAnswerIndex = ref<number | null>(null);
-const timeLeft = ref(10); // 10 seconds per question
+const timeLeft = ref(15); // 10 seconds per question
 const gameEnded = ref(false);
 
 const selectQuestions = () => {
