@@ -126,7 +126,7 @@ const resetGame = () => {
     position: absolute;
     top: 8.5%;
     right: 12%;
-    color: white;
+    color: $color-light-grey;
     font-size: 38px;
     &:hover {
       transform: scale(0.9);

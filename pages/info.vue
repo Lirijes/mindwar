@@ -51,6 +51,8 @@
 </template>
 
 <style scoped lang="scss">
+@import "../assets/css/main.scss";
+
 .info {
   position: relative;
   min-height: 100vh;
@@ -71,7 +73,7 @@
     position: absolute;
     top: 2%;
     left: 8%;
-    color: white;
+    color: $color-light-grey;
     font-size: 48px;
     &:hover {
       transform: scale(0.9);
