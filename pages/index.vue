@@ -27,6 +27,7 @@ const resetGame = () => {
   showGameStartButton.value = false;
   showGameInterface.value = false;
   showOptions.value = true;
+  showHeader.value = true;
 };
 </script>
 
@@ -37,13 +38,17 @@ const resetGame = () => {
       src="../public/images/background/mountains-5689938_1280-withoutmoon.png"
       alt="background"
     />
-    <NuxtLink to="/info" class="index__info">
+    <NuxtLink to="/" class="index__home" @click="resetGame">
       <img
         src="../public/images/icons/mountains-5689938_1280.png"
         alt="info icon"
-        class="index__info-icon"
+        class="index__home-icon"
       />
     </NuxtLink>
+
+    <NuxtLink to="/info" class="index__info"
+      ><div><font-awesome-icon icon="fa-solid fa-info" /></div
+    ></NuxtLink>
 
     <h1 id="index__header" v-if="showHeader" class="index__header">
       <span>Let's Mind War!</span><span>Choose Your Player</span>
@@ -94,11 +99,12 @@ const resetGame = () => {
     width: 100%;
     height: 100vh;
     object-fit: cover;
+    z-index: -1;
   }
-  &__info {
+  &__home {
     position: absolute;
-    top: 2%;
-    left: 4%;
+    top: 9%;
+    left: 8%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,12 +113,35 @@ const resetGame = () => {
       transform: scale(0.9);
     }
     &-icon {
-      width: 140px;
-      height: 140px;
+      width: 60px;
+      height: 60px;
       object-fit: cover;
       @media (min-width: 1200px) {
-        width: 200px;
-        height: 200px;
+        width: 90px;
+        height: 90px;
+      }
+    }
+  }
+  &__info {
+    position: absolute;
+    top: 8.5%;
+    right: 12%;
+    color: white;
+    font-size: 38px;
+    &:hover {
+      transform: scale(0.9);
+    }
+    @media (min-width: 1200px) {
+      top: 10%;
+      font-size: 46px;
+    }
+    &-icon {
+      width: 150px;
+      height: 50px;
+      object-fit: cover;
+      @media (min-width: 1200px) {
+        width: 70px;
+        height: 70px;
       }
     }
   }
