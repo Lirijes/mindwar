@@ -32,7 +32,7 @@
       <div class="info__grid-box">
         <h5>Login to My Account</h5>
         <p>
-          Login
+          Login currently not working. Please check back later.
         </p>
       </div>
       <div class="info__grid-box info__grid-box-wide">
