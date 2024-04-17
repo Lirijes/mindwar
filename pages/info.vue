@@ -1,10 +1,5 @@
 <template>
   <div class="info">
-    <!-- <img
-      class="info__background-image"
-      src="../public/images/background/dea78d61-beed-4d92-94e2-e8302d12aa89.jpg"
-      alt="background image"
-    /> -->
     <NuxtLink to="/" class="info__home">
       <font-awesome-icon icon="fa-solid fa-circle-arrow-left" />
     </NuxtLink>
@@ -96,13 +91,15 @@
     }
   }
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 20px;
+    display: flex;
+    flex-direction: column;
     margin: 200px auto; 
     width: 70%;
+    margin-bottom: 20px;
     @media (min-width: 992px) {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
     }
     &-box {
       padding: 20px;
@@ -110,6 +107,7 @@
       border-radius: 10px;
       color: white;
       font-size: 12px;
+      margin-bottom: 20px;
       @media (min-width: 1200px) {
         font-size: 14px;
       }
